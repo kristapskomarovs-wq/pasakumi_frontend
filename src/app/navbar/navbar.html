@@ -1,0 +1,10 @@
+<nav class="navbar navbar-dark bg-dark px-3">
+  <span class="navbar-brand">🎉 Pasākumi</span>
+  <div class="d-flex gap-2">
+    <button class="btn btn-outline-light btn-sm" (click)="goToEvents()">Visi pasākumi</button>
+    <button class="btn btn-outline-light btn-sm" (click)="goToCreate()">+ Izveidot</button>
+    <button class="btn btn-outline-light btn-sm" (click)="goToMyEvents()">Mani pasākumi</button>
+    <span class="text-light align-self-center ms-2">{{ userData.email }}</span>
+    <button class="btn btn-outline-danger btn-sm" (click)="logout()">Iziet</button>
+  </div>
+</nav>

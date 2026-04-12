@@ -1,0 +1,48 @@
+<app-navbar />
+
+<div class="container py-4">
+  <div class="mb-4">
+    <h2>Visi Pasākumi</h2>
+  </div>
+
+  <div class="row">
+    @for (event of events(); track event.id) {
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm"
+             [class.border-danger]="event.isFull"
+             [class.border-success]="event.isJoined">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.title }}</h5>
+            <p class="card-text text-muted">{{ event.description }}</p>
+
+            <ul class="list-unstyled">
+              <li>📅 {{ event.eventDate }}</li>
+              <li>⏰ {{ event.eventTime }}</li>
+              <li>📍 {{ event.location }}</li>
+              <li>👥 {{ event.currentParticipants ?? '?' }} / {{ event.maxParticipants }}</li>
+              <li>✏️ Izveidoja: {{ event.creator?.email }}</li>
+            </ul>
+
+            <!-- POGAS -->
+            @if (event.isJoined) {
+              <span class="badge bg-success me-2">Tu esi pieteicies ✅</span>
+              <button class="btn btn-outline-danger btn-sm" (click)="onLeave(event.id!)">
+                Atcelt dalību
+              </button>
+            } @else if (event.isFull) {
+              <span class="badge bg-danger">Pilns</span>
+            } @else {
+              <button class="btn btn-success w-100" (click)="onJoin(event.id!)">
+                Pieteikties
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="col-12">
+        <div class="alert alert-info">Nav neviena pasākuma. Izveido pirmo!</div>
+      </div>
+    }
+  </div>
+</div>

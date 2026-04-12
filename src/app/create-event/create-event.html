@@ -1,0 +1,53 @@
+<app-navbar />
+
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Izveidot jaunu pasākumu</h4>
+        </div>
+        <div class="card-body">
+
+          @if (errorMessage()) {
+            <div class="alert alert-danger">{{ errorMessage() }}</div>
+          }
+
+          <div class="mb-3">
+            <label class="form-label">Nosaukums *</label>
+            <input type="text" class="form-control" [(ngModel)]="title" placeholder="Angular Meetup">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Apraksts</label>
+            <textarea class="form-control" [(ngModel)]="description" rows="3"
+                      placeholder="Apraksts par pasākumu..."></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label class="form-label">Datums *</label>
+              <input type="date" class="form-control" [(ngModel)]="eventDate" [min]="today">
+            </div>
+            <div class="col-6 mb-3">
+              <label class="form-label">Laiks *</label>
+              <input type="time" class="form-control" [(ngModel)]="eventTime">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vieta *</label>
+            <input type="text" class="form-control" [(ngModel)]="location" placeholder="Rīga, Brīvības 100">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Maks. dalībnieku skaits *</label>
+            <input type="number" class="form-control" [(ngModel)]="maxParticipants" min="1">
+          </div>
+
+          <button class="btn btn-success w-100" (click)="onSubmit()">Izveidot pasākumu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
