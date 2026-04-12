@@ -3,11 +3,10 @@
     <div class="col-md-5">
       <div class="card shadow">
         <div class="card-header bg-primary text-white">
-          <h4 class="mb-0">Pasākumu Platforma</h4>
+          <h4 class="mb-0">🎉 Pasākumu Platforma</h4>
         </div>
         <div class="card-body">
 
-          <!-- KĻŪDA -->
           @if (errorMessage()) {
             <div class="alert alert-danger">{{ errorMessage() }}</div>
           }
@@ -15,33 +14,37 @@
           <!-- EMAIL -->
           <div class="mb-3">
             <label class="form-label">E-pasts</label>
-            <input type="email" class="form-control" [(ngModel)]="email"
-                   (keyup.enter)="onCheckEmail()" placeholder="tavs@epasts.lv">
+            <input type="email" class="form-control"
+                   [formField]="loginForm.user.email"
+                   (input)="onEmailInput($any($event.target).value)"
+                   (keyup.enter)="onCheckEmail()">
+            <app-error-validation [fieldState]="loginForm.user.email()" />
           </div>
 
-          <!-- Ja vēl nezinām vai eksistē -->
-          @if (isRegistered() === null) {
-            <button class="btn btn-primary w-100" (click)="onCheckEmail()">Turpināt</button>
-          }
-
-          <!-- Ja eksistē — LOGIN -->
+          <!-- LOGIN -->
           @if (isRegistered() === true) {
             <div class="mb-3">
               <label class="form-label">Parole</label>
-              <input type="password" class="form-control" [(ngModel)]="password">
+              <input type="password" class="form-control"
+                     [formField]="loginForm.user.password">
+              <app-error-validation [fieldState]="loginForm.user.password()" />
             </div>
             <button class="btn btn-success w-100" (click)="onLogin()">Ielogoties</button>
           }
 
-          <!-- Ja neeksistē — REGISTER -->
+          <!-- REGISTER -->
           @if (isRegistered() === false) {
             <div class="mb-3">
               <label class="form-label">Parole</label>
-              <input type="password" class="form-control" [(ngModel)]="password">
+              <input type="password" class="form-control"
+                     [formField]="loginForm.user.password">
+              <app-error-validation [fieldState]="loginForm.user.password()" />
             </div>
             <div class="mb-3">
               <label class="form-label">Apstiprināt paroli</label>
-              <input type="password" class="form-control" [(ngModel)]="confirmPassword">
+              <input type="password" class="form-control"
+                     [formField]="loginForm.user.confirmPassword">
+              <app-error-validation [fieldState]="loginForm.user.confirmPassword()" />
             </div>
             <button class="btn btn-success w-100" (click)="onRegister()">Reģistrēties</button>
           }

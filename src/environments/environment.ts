@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    api: { baseUrl: 'http://localhost:8088/api' }
+    production: true,
+    api: { baseUrl: 'https://komarovs.lv/api' }
 };
