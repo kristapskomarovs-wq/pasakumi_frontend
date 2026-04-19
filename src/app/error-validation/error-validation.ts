@@ -7,5 +7,5 @@ import { FieldState } from '@angular/forms/signals';
   templateUrl: './error-validation.html',
 })
 export class ErrorValidation {
-  fieldState = input.required<FieldState<any, string>>();
+  fieldState = input.required<FieldState<any, string>>(); // Pievienojam tipa anotāciju, lai norādītu, ka fieldState ir FieldState ar string kļūdas ziņojumu
 }
