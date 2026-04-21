@@ -77,4 +77,5 @@ export class EventsComponent implements OnInit {
       error: (err) => alert(err.error || 'Atcelšana neizdevās!')
     });
   }
+
 }

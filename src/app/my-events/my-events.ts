@@ -22,11 +22,18 @@ export class MyEventsComponent implements OnInit {
   }
 
   loadMyEvents() {
-    this.eventService.getMyEvents(this.userData.id).subscribe({
-      next: (r) => this.myRegistrations.set(r.body ?? []),
-      error: () => alert('Kļūda ielādējot pasākumus!')
-    });
-  }
+  console.log('loadMyEvents called, userId:', this.userData.id);
+  this.eventService.getMyEvents(this.userData.id).subscribe({
+    next: (r) => {
+      console.log('response:', r.body);
+      this.myRegistrations.set(r.body ?? []);
+    },
+    error: (err) => {
+      console.log('error:', err);
+      alert('Kļūda ielādējot pasākumus!');
+    }
+  });
+}
 
   onLeave(eventId: number) {
     this.eventService.leaveEvent(eventId, this.userData.id).subscribe({
@@ -37,4 +44,15 @@ export class MyEventsComponent implements OnInit {
       error: (err) => alert(err.error || 'Atcelšana neizdevās!')
     });
   }
+  onDelete(eventId: number) {
+  if (!confirm('Dzēst pasākumu? Visi pieteikumi tiks atcelti!')) return;
+
+  this.eventService.deleteEvent(eventId, this.userData.id).subscribe({
+    next: () => {
+      alert('Pasākums dzēsts! 🗑️');
+      this.loadMyEvents();
+    },
+    error: (err) => alert(err.error || 'Kļūda dzēšot pasākumu!')
+  });
+}
 }

@@ -61,4 +61,11 @@ export class EventService {
       { observe: 'response' }
     );
   }
+  deleteEvent(eventId: number, creatorId: number): Observable<HttpResponse<string>> {
+    return this.http.delete(
+        `${this.baseUrl}/v1/events/${eventId}?creatorId=${creatorId}`,
+        { observe: 'response', responseType: 'text' }
+    );
+}
+
 }
