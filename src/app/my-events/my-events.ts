@@ -25,11 +25,9 @@ export class MyEventsComponent implements OnInit {
   console.log('loadMyEvents called, userId:', this.userData.id);
   this.eventService.getMyEvents(this.userData.id).subscribe({
     next: (r) => {
-      console.log('response:', r.body);
       this.myRegistrations.set(r.body ?? []);
     },
     error: (err) => {
-      console.log('error:', err);
       alert('Kļūda ielādējot pasākumus!');
     }
   });

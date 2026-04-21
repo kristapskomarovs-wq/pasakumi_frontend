@@ -1,11 +1,11 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-5">
-      <div class="card shadow">
-        <div class="card-header bg-primary text-white">
+      <div class="card shadow bg-secondary bg-opacity-50">
+        <div class="card-header bg-dark text-white">
           <h4 class="mb-0">🎉 Pasākumu Platforma</h4>
         </div>
-        <div class="card-body">
+        <div class="card-body fw-bold">
 
           @if (errorMessage()) {
             <div class="alert alert-danger">{{ errorMessage() }}</div>
@@ -14,7 +14,7 @@
           <!-- EMAIL -->
           <div class="mb-3">
             <label class="form-label">E-pasts</label>
-            <input type="email" class="form-control"
+            <input type="email" class="form-control bg-secondary bg-opacity-50 fw-bold"
                    [formField]="loginForm.user.email"
                    (input)="onEmailInput($any($event.target).value)"
                    (keyup.enter)="onCheckEmail()">
@@ -25,7 +25,7 @@
           @if (isRegistered() === true) {
             <div class="mb-3">
               <label class="form-label">Parole</label>
-              <input type="password" class="form-control"
+              <input type="password" class="form-control bg-secondary bg-opacity-50 fw-bold"
                      [formField]="loginForm.user.password">
               <app-error-validation [fieldState]="loginForm.user.password()" />
             </div>
@@ -36,13 +36,13 @@
           @if (isRegistered() === false) {
             <div class="mb-3">
               <label class="form-label">Parole</label>
-              <input type="password" class="form-control"
+              <input type="password" class="form-control bg-secondary bg-opacity-50 fw-bold"
                      [formField]="loginForm.user.password">
               <app-error-validation [fieldState]="loginForm.user.password()" />
             </div>
             <div class="mb-3">
               <label class="form-label">Apstiprināt paroli</label>
-              <input type="password" class="form-control"
+              <input type="password" class="form-control bg-secondary bg-opacity-50 fw-bold"
                      [formField]="loginForm.user.confirmPassword">
               <app-error-validation [fieldState]="loginForm.user.confirmPassword()" />
             </div>
