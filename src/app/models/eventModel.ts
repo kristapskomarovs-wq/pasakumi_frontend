@@ -1,7 +1,7 @@
 import { signal, WritableSignal } from '@angular/core';
 import { required, SchemaPathTree, validate } from '@angular/forms/signals';
 
-export interface EventModel {
+export interface EventModel {  // Kā dati tiek saņemti no API un attēloti sarakstā
     id?: number;
     title: string;
     description: string;
@@ -18,7 +18,7 @@ export interface EventModel {
     isFull?: boolean;
 }
 
-export interface EventFormModel {
+export interface EventFormModel { // ko lietotājs aizpilda formā 
     title: string;
     description: string;
     eventDate: string;
@@ -27,7 +27,7 @@ export interface EventFormModel {
     maxParticipants: number;
 }
 
-export function createEventForm(): WritableSignal<EventFormModel> {
+export function createEventForm(): WritableSignal<EventFormModel> { // Sākotnējās vērtības formai
     return signal<EventFormModel>({
         title: '',
         description: '',
@@ -38,7 +38,7 @@ export function createEventForm(): WritableSignal<EventFormModel> {
     });
 }
 
-export function validateEventForm(s: SchemaPathTree<EventFormModel>) {
+export function validateEventForm(s: SchemaPathTree<EventFormModel>) { // Validācijas noteikumi formai
     required(s.title, { message: 'Nosaukums ir obligāts!' });
     required(s.eventDate, { message: 'Datums ir obligāts!' });
     required(s.eventTime, { message: 'Laiks ir obligāts!' });

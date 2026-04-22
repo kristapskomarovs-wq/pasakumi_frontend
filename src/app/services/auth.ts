@@ -9,20 +9,20 @@ export class AuthService {
   private http = inject(HttpClient);
   private baseUrl = environment.api.baseUrl;
 
-  register(user: UserLoginModel): Observable<HttpResponse<number>> {
-    return this.http.post<number>(`${this.baseUrl}/v1/register`, user, {
+  register(user: UserLoginModel): Observable<HttpResponse<number>> {    // httpresponse=atgriež id, ko atgriež API, šajā gadījumā user id
+    return this.http.post<number>(`${this.baseUrl}/v1/register`, user, { 
       observe: 'response',
     });
   }
 
-  checkEmail(email: string): Observable<HttpResponse<boolean>> {
+  checkEmail(email: string): Observable<HttpResponse<boolean>> { // pārbauda, vai e-pasts jau ir reģistrēts, atgriež true/false
     return this.http.get<boolean>(
       `${this.baseUrl}/v1/checkemail/${encodeURIComponent(email)}`,
       { observe: 'response' }
     );
   }
 
-  login(user: UserLoginModel): Observable<HttpResponse<number>> {
+  login(user: UserLoginModel): Observable<HttpResponse<number>> { // pieslēgšanās, atgriež user id
     return this.http.post<number>(`${this.baseUrl}/v1/login`, user, {
       observe: 'response',
     });

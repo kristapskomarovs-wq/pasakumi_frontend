@@ -7,12 +7,12 @@ export interface UserLoginModel {
     confirmPassword: string;
 }
 
-export interface UserData {
+export interface UserData {  // Dati, kas tiek saglabāti sesijā pēc login vai reģistrācijas - paroli vairs nevajag
     id: number;
     email: string;
 }
 
-export function createUserLoginForm(): WritableSignal<UserLoginModel> {
+export function createUserLoginForm(): WritableSignal<UserLoginModel> {     // Sākotnējās vērtības formai
     return signal<UserLoginModel>({
         email: '',
         password: '',
@@ -20,7 +20,7 @@ export function createUserLoginForm(): WritableSignal<UserLoginModel> {
     });
 }
 
-export function validateUserLoginForm(s: SchemaPathTree<UserLoginModel>) {
+export function validateUserLoginForm(s: SchemaPathTree<UserLoginModel>) {   // Validācijas noteikumi formai
     required(s.email, { message: 'E-pasts ir obligāts!' });
     required(s.password, { message: 'Parole ir obligāta!' });
     required(s.confirmPassword, { message: 'Paroles apstiprināšana ir obligāta!' });

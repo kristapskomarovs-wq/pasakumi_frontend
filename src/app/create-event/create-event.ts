@@ -50,7 +50,7 @@ export class CreateEventComponent {
     this.eventService.createEvent(eventData as any, userId).subscribe({
       next: (r) => {
         if (r.status === 201) {
-          alert('Pasākums izveidots! ✅');
+          alert('Pasākums izveidots!');
           this.router.navigateByUrl('/events');
         }
       },

@@ -22,7 +22,7 @@ export class EventsComponent implements OnInit {
   }
 
   loadEvents() {
-    this.eventService.getAllEvents().subscribe({
+    this.eventService.getAllEvents().subscribe({ // Iegūstam visus pasākumus
       next: (r) => {
         const eventList = r.body ?? [];
         if (!eventList.length) {
@@ -30,14 +30,14 @@ export class EventsComponent implements OnInit {
           return;
         }
 
-        forkJoin(
+        forkJoin( // Par katru pasākumu iegūstam dalībnieku skaitu un vai lietotājs ir pieteicies
           eventList.map((event) =>
             forkJoin({
               countRes: this.eventService.getParticipantCount(event.id!),
               joinedRes: this.eventService.isJoined(event.id!, this.userData.id),
             })
           )
-        ).subscribe({
+        ).subscribe({ // Kad visi dati ir iegūti, apvienojam tos un atjaunojam events signālu
           next: (details) => {
             const enriched = eventList.map((event, index): EventModel => {
               const currentParticipants = details[index].countRes.body ?? 0;
@@ -61,7 +61,7 @@ export class EventsComponent implements OnInit {
   onJoin(eventId: number) {
     this.eventService.joinEvent(eventId, this.userData.id).subscribe({
       next: () => {
-        alert('Veiksmīgi pieteicies! ✅');
+        alert('Veiksmīgi pieteicies!');
         this.loadEvents();
       },
       error: (err) => alert(err.error || 'Pieteikšanās neizdevās!')

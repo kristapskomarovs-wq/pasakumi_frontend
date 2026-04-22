@@ -5,10 +5,10 @@ import { UserData } from '../models/userModel';
 export class UserDataService {
 
   setUserData(data: UserData): void {
-    sessionStorage.setItem('userData', JSON.stringify(data));
+    sessionStorage.setItem('userData', JSON.stringify(data));  //saglabājam userData sessionStorage, lai varētu izmantot citur aplikācijā
   }
 
-  getUserData(): UserData {
+  getUserData(): UserData {  //iegūstam userData no sessionStorage, ja nav, atgriežam tukšu objektu
     const raw = sessionStorage.getItem('userData');
     if (!raw) return { id: 0, email: '' };
     try {
@@ -19,6 +19,6 @@ export class UserDataService {
   }
 
   isLoggedIn(): boolean {
-    return this.getUserData().id > 0;
+    return this.getUserData().id > 0;  // pārbauda, vai lietotājs ir pieslēdzies - ja id ir lielāks par 0, tad ir pieslēdzies
   }
 }
