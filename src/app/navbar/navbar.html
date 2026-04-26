@@ -1,10 +1,18 @@
-<nav class="navbar navbar-dark bg-dark px-3">
-  <span class="navbar-brand"> <img src="star.png" alt="star" style="width:25px;height:25px;"> Pasākumi</span>
-  <div class="d-flex gap-2">
-    <button class="btn btn-outline-light btn-sm" (click)="goToEvents()">Visi pasākumi</button>
-    <button class="btn btn-outline-light btn-sm" (click)="goToCreate()">+ Izveidot</button>
-    <button class="btn btn-outline-light btn-sm" (click)="goToMyEvents()">Mani pasākumi</button>
-    <span class="text-light align-self-center ms-2">{{ userData.email }}</span>
-    <button class="btn btn-outline-danger btn-sm" (click)="logout()">Iziet</button>
+<nav class="navbar navbar-dark bg-dark navbar-expand-md px-3">
+  <span class="navbar-brand">
+    <img src="star.png" alt="star" style="width:25px;height:25px;"> Pasākumi
+  </span>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarMenu">
+    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2 ms-auto mt-2 mt-md-0 pb-2 pb-md-0">
+      <button class="btn btn-outline-light btn-sm" (click)="goToEvents()">Visi pasākumi</button>
+      <button class="btn btn-outline-light btn-sm" (click)="goToCreate()">+ Izveidot</button>
+      <button class="btn btn-outline-light btn-sm" (click)="goToMyEvents()">Mani pasākumi</button>
+      <span class="text-light align-self-start align-self-md-center ms-md-2">{{ shortEmail }}</span>
+      <button class="btn btn-outline-danger btn-sm" (click)="logout()">Iziet</button>
+    </div>
   </div>
 </nav>

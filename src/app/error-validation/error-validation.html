@@ -1,5 +1,5 @@
 <div>
-    @if(fieldState().invalid() && fieldState().touched()) { // Ja lauks ir nederīgs un ir aiztikts, kļuda
+    @if(fieldState().invalid() && fieldState().touched()) { 
         @for(err of fieldState().errors(); track err) {
             <p class="text-danger small mb-0 mt-1">{{err.message}}</p>
         }

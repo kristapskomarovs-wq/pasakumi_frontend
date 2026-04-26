@@ -12,6 +12,11 @@ export class Navbar {
   private userDataService = inject(UserDataService);
   userData = this.userDataService.getUserData();
 
+  get shortEmail(): string {
+    const email = this.userData.email;
+    return email ? email.split('@')[0] : '';
+  }
+
   goToEvents() { this.router.navigateByUrl('/events'); }
   goToCreate() { this.router.navigateByUrl('/create'); }
   goToMyEvents() { this.router.navigateByUrl('/my-events'); }

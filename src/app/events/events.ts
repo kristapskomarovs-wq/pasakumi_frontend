@@ -78,4 +78,20 @@ export class EventsComponent implements OnInit {
     });
   }
 
+  onDelete(eventId: number) {
+    if (!confirm('Vai tiešām dzēst šo pasākumu?')) return;
+    this.eventService.deleteEvent(eventId, this.userData.id).subscribe({
+      next: () => {
+        alert('Pasākums dzēsts!');
+        this.loadEvents();
+      },
+      error: (err) => alert(err.error || 'Dzēšana neizdevās!')
+    });
+  }
+
+  isPast(event: EventModel): boolean {
+    const eventDateTime = new Date(`${event.eventDate}T${event.eventTime}`);
+    return eventDateTime < new Date();
+  }
+
 }

@@ -20,11 +20,18 @@
               <li>⏰ {{ event.eventTime }}</li>
               <li>📍 {{ event.location }}</li>
               <li>👥 {{ event.currentParticipants ?? '?' }} / {{ event.maxParticipants }}</li>
-              <li>✏️ Izveidoja: {{ event.creator?.email }}</li>
+              <li class="d-flex align-items-center gap-2 flex-wrap">
+                ✏️ Izveidoja: {{ event.creator?.email }}
+                @if (event.creator?.id === userData.id) {
+                  <button class="btn btn-danger btn-sm" (click)="onDelete(event.id!)">Dzēst</button>
+                }
+              </li>
             </ul>
 
             <!-- POGAS -->
-            @if (event.isJoined) {
+            @if (isPast(event)) {
+              <span class="btn btn-secondary btn-sm w-100 disabled">Pasākums ir beidzies</span>
+            } @else if (event.isJoined) {
               <span class="btn btn-success btn-sm me-2 disabled">Tu esi pieteicies ✅</span>
               <button class="btn btn-warning text-white btn-sm" (click)="onLeave(event.id!)">
                 Atcelt dalību
