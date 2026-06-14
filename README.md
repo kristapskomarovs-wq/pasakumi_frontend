@@ -46,6 +46,11 @@ https://github.com/kristapskomarovs-wq/pasakumu_serveris
 - Creating reusable validation components
 - Structuring frontend models and services
 
+## Live Demo
+
+https://komarovs.lv/
+
+
 ## Screenshots
 
 ### Login / Register
