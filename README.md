@@ -1,59 +1,122 @@
-# PasakumiFrontend
+# Event Registration Platform — Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.3.
+Angular frontend for an event registration platform.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- User login and registration flow
+- Email availability check through backend API
+- Event list page
+- Create event form
+- Join and leave events
+- My events page
+- Route guard for protected pages
+- Session-based frontend login state using sessionStorage
+- Angular Signals Forms validation
+
+## Tech Stack
+
+- Angular
+- TypeScript
+- Angular Signals Forms
+- RxJS
+- HTML/CSS
+- REST API integration
+
+## Backend
+
+This frontend connects to the Spring Boot backend:
+
+https://github.com/kristapskomarovs-wq/pasakumu_serveris
+
+## Main API flows
+
+- `GET /api/v1/events` — load all events
+- `POST /api/v1/events` — create event
+- `POST /api/v1/events/{eventId}/join` — join event
+- `DELETE /api/v1/events/{eventId}/leave` — leave event
+- `GET /api/v1/events/my` — load user registrations
+
+## What I learned
+
+- Building Angular components and services
+- Connecting frontend to backend with HttpClient
+- Handling async data with Observables
+- Using Angular router and route guards
+- Creating reusable validation components
+- Structuring frontend models and services
+
+## Run locally
 
 ```bash
+npm install
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Frontend runs on:
 
-## Code scaffolding
+http://localhost:4200
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+#### README priekš `pasakumu_serveris`
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+```md
+# Event Registration Platform — Backend
 
-```bash
-ng generate --help
-```
+Spring Boot backend for an event registration platform.
 
-## Building
+## Features
 
-To build the project run:
+- User registration
+- User login
+- Email existence check
+- Create events
+- List all events
+- Join events
+- Leave events
+- View user registrations
+- Count event participants
+- Delete events by creator
+- PostgreSQL database integration
 
-```bash
-ng build
-```
+## Tech Stack
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Java
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Hibernate
+- PostgreSQL
+- Maven
+- REST API
 
-## Running unit tests
+## Database model
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Main entities:
 
-```bash
-ng test
-```
+- `UserModel`
+- `EventModel`
+- `RegistrationModel`
 
-## Running end-to-end tests
+Relationships:
 
-For end-to-end (e2e) testing, run:
+- One user can create many events
+- One user can register for many events
+- One event can have many registrations
+- `RegistrationModel` connects users and events
 
-```bash
-ng e2e
-```
+## API examples
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+```http
+POST /api/v1/register
+POST /api/v1/login
+GET /api/v1/checkemail/{email}
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+GET /api/v1/events
+POST /api/v1/events?creatorId={creatorId}
+POST /api/v1/events/{eventId}/join?userId={userId}
+DELETE /api/v1/events/{eventId}/leave?userId={userId}
+GET /api/v1/events/my?userId={userId}
+GET /api/v1/events/{eventId}/count
+GET /api/v1/events/{eventId}/joined?userId={userId}
+DELETE /api/v1/events/{eventId}?creatorId={creatorId}gular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
