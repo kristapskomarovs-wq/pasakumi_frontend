@@ -46,77 +46,19 @@ https://github.com/kristapskomarovs-wq/pasakumu_serveris
 - Creating reusable validation components
 - Structuring frontend models and services
 
-## Run locally
+## Screenshots
 
-```bash
-npm install
-ng serve
+### Login / Register
 
-Frontend runs on:
+<img width="1917" height="908" alt="login_page" src="https://github.com/user-attachments/assets/66954308-e40f-4ee0-87ba-115de13c387b" />
 
-http://localhost:4200
 
----
+### Main page
 
-#### README priekš `pasakumu_serveris`
+<img width="1915" height="901" alt="main_page" src="https://github.com/user-attachments/assets/bcd8c456-b51a-4b81-ad55-0b8b52ca777c" />
 
-```md
-# Event Registration Platform — Backend
 
-Spring Boot backend for an event registration platform.
 
-## Features
+### Create event
 
-- User registration
-- User login
-- Email existence check
-- Create events
-- List all events
-- Join events
-- Leave events
-- View user registrations
-- Count event participants
-- Delete events by creator
-- PostgreSQL database integration
-
-## Tech Stack
-
-- Java
-- Spring Boot
-- Spring Web
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- Maven
-- REST API
-
-## Database model
-
-Main entities:
-
-- `UserModel`
-- `EventModel`
-- `RegistrationModel`
-
-Relationships:
-
-- One user can create many events
-- One user can register for many events
-- One event can have many registrations
-- `RegistrationModel` connects users and events
-
-## API examples
-
-```http
-POST /api/v1/register
-POST /api/v1/login
-GET /api/v1/checkemail/{email}
-
-GET /api/v1/events
-POST /api/v1/events?creatorId={creatorId}
-POST /api/v1/events/{eventId}/join?userId={userId}
-DELETE /api/v1/events/{eventId}/leave?userId={userId}
-GET /api/v1/events/my?userId={userId}
-GET /api/v1/events/{eventId}/count
-GET /api/v1/events/{eventId}/joined?userId={userId}
-DELETE /api/v1/events/{eventId}?creatorId={creatorId}gular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+<img width="1916" height="898" alt="create_event" src="https://github.com/user-attachments/assets/8878eda6-af93-47f3-863c-ae01acfc6a4e" />
