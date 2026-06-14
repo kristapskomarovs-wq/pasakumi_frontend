@@ -52,7 +52,7 @@ GET /api/v1/events/my
 
 ## Live Demo
 
-- `https://komarovs.lv/`
+- https://komarovs.lv/
 
 ## Screenshots
 
