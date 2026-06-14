@@ -4,14 +4,15 @@ Angular frontend for an event registration platform.
 
 ## Features
 
-- User login and registration flow
-- Email availability check through backend API
-- Event list page
-- Create event form
-- Join and leave events
-- My events page
+- User registration and login flow
+- Email availability check
+- List all events
+- Create events
+- Join events
+- Leave events
+- View user registrations
 - Route guard for protected pages
-- Session-based frontend login state using sessionStorage
+- Session-based login state with `sessionStorage`
 - Angular Signals Forms validation
 
 ## Tech Stack
@@ -20,27 +21,30 @@ Angular frontend for an event registration platform.
 - TypeScript
 - Angular Signals Forms
 - RxJS
-- HTML/CSS
-- REST API integration
+- HTML
+- CSS
+- REST API
 
 ## Backend
 
 This frontend connects to the Spring Boot backend:
 
-https://github.com/kristapskomarovs-wq/pasakumu_serveris
+- `pasakumu_serveris`
 
-## Main API flows
+## API examples
 
-- `GET /api/v1/events` — load all events
-- `POST /api/v1/events` — create event
-- `POST /api/v1/events/{eventId}/join` — join event
-- `DELETE /api/v1/events/{eventId}/leave` — leave event
-- `GET /api/v1/events/my` — load user registrations
+```http
+GET /api/v1/events
+POST /api/v1/events
+POST /api/v1/events/{eventId}/join
+DELETE /api/v1/events/{eventId}/leave
+GET /api/v1/events/my
+```
 
 ## What I learned
 
 - Building Angular components and services
-- Connecting frontend to backend with HttpClient
+- Connecting frontend to backend with `HttpClient`
 - Handling async data with Observables
 - Using Angular router and route guards
 - Creating reusable validation components
@@ -48,8 +52,7 @@ https://github.com/kristapskomarovs-wq/pasakumu_serveris
 
 ## Live Demo
 
-https://komarovs.lv/
-
+- `https://komarovs.lv/`
 
 ## Screenshots
 
@@ -57,12 +60,9 @@ https://komarovs.lv/
 
 <img width="1917" height="908" alt="login_page" src="https://github.com/user-attachments/assets/66954308-e40f-4ee0-87ba-115de13c387b" />
 
-
 ### Main page
 
 <img width="1915" height="901" alt="main_page" src="https://github.com/user-attachments/assets/bcd8c456-b51a-4b81-ad55-0b8b52ca777c" />
-
-
 
 ### Create event
 
