@@ -29,7 +29,7 @@ Angular frontend for an event registration platform.
 
 This frontend connects to the Spring Boot backend:
 
-- `pasakumu_serveris`
+[pasakumu_serveris](https://github.com/kristapskomarovs-wq/pasakumu_serveris)
 
 ## API examples
 
